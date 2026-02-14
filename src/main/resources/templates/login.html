@@ -1,0 +1,7 @@
+<form th:action="@{/login}" method="post">
+    <input type="email" name="username" placeholder="Email"/>
+    <input type="password" name="password" placeholder="Password"/>
+    <input type="checkbox" name="remember-me"/> Remember me
+    <button type="submit">Log in</button>
+</form>
+<a th:href="@{/register}">Are you a new User? Register Now</a>
