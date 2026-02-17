@@ -19,17 +19,25 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/**", "/login").permitAll()
+                        .requestMatchers(
+                                "/users/register",
+                                "/users/login"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .usernameParameter("email")
+                        .loginPage("/users/login")   // 🔥 MATCH CONTROLLER
+                        .loginProcessingUrl("/users/login") // important
+                        .usernameParameter("email")  // must match input name
                         .passwordParameter("password")
                         .defaultSuccessUrl("/dashboard", true)
                         .permitAll()
                 )
-                .logout(logout -> logout.permitAll());
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/users/login")
+                        .permitAll()
+                );
 
         return http.build();
     }
