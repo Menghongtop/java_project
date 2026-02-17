@@ -8,25 +8,35 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "user_id")   // matches SQL column
+    private Long userId;
 
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
-    private String recruiter;
+
+    @Column(name = "user_type_id", nullable = false)
+    private Integer userTypeId;  // FK to users_type
+
+    @Column(name = "is_active")
+    private Boolean isActive = true;
+
+    @Column(name = "registration_date", updatable = false, insertable = false)
+    private java.sql.Timestamp registrationDate;
 
     // --- Getters and Setters ---
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -34,16 +44,28 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getRecruiter() {
-        return recruiter;
+    public Integer getUserTypeId() {
+        return userTypeId;
+    }
+    public void setUserTypeId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
     }
 
-    public void setRecruiter(String recruiter) {
-        this.recruiter = recruiter;
+    public Boolean getIsActive() {
+        return isActive;
+    }
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public java.sql.Timestamp getRegistrationDate() {
+        return registrationDate;
+    }
+    public void setRegistrationDate(java.sql.Timestamp registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

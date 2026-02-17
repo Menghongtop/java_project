@@ -17,13 +17,19 @@
         <input type="password" th:field="*{password}" placeholder="Password"
                style="width:90%; padding:12px; margin-bottom:10px; border-radius:6px; border:1px solid #ccc;" required>
 
-        <input type="text" th:field="*{recruiter}" placeholder="Recruiter"
-               style="width:90%; padding:12px; margin-bottom:10px; border-radius:6px; border:1px solid #ccc;">
+        <!-- Replace recruiter text field with dropdown -->
+        <select th:field="*{userTypeId}" required>
+            <option value="1">Job Seeker</option>
+            <option value="2">Recruiter</option>
+        </select>
+
 
         <button type="submit"
                 style="width:100%; padding:12px; background:#42b72a; border:none; border-radius:6px; color:white; font-size:16px; font-weight:bold;">
             Sign Up
         </button>
+
+    </form>
 
     </form>
 
