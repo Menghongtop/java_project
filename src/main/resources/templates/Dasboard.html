@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<h2>Welcome to your Dashboard!</h2>
+<p>You are logged in successfully.</p>
+
+<nav>
+    <a th:href="@{/candidate/register}">Candidate Register</a> |
+    <a th:href="@{/recruiter/register}">Recruiter Register</a> |
+    <a th:href="@{/logout}">Logout</a>
+</nav>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.assignment.demo;
+package com.assignment.Model;
 
 import jakarta.persistence.*;
 

@@ -26,11 +26,11 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/users/login")   // 🔥 MATCH CONTROLLER
-                        .loginProcessingUrl("/users/login") // important
-                        .usernameParameter("email")  // must match input name
+                        .loginPage("/users/login")          // matches your login.html
+                        .loginProcessingUrl("/users/login") // Spring handles POST here
+                        .usernameParameter("email")         // must match <input name="email">
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/dashboard", true)
+                        .defaultSuccessUrl("/dashboard", true) // ✅ always go to dashboard
                         .permitAll()
                 )
                 .logout(logout -> logout
