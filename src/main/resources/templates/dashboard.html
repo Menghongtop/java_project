@@ -1,71 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            margin: 0;
-            padding: 0;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 30px;
-            color: #333;
-        }
-
-        p {
-            text-align: center;
-            color: #555;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            background: #2c3e50;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        nav a {
-            color: #ecf0f1;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #1abc9c;
-        }
-
-        .dashboard-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-    </style>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head :: head('job Dashboard')"></head>
 <body>
-<div class="dashboard-container">
-    <h2>Welcome to your Dashboard!</h2>
-    <p>You are logged in successfully.</p>
 
-    <nav>
-        <a th:href="@{/users/register}">Register</a> |
-        <a th:href="@{/users/login}">Login</a> |
-        <form th:action="@{/logout}" method="post" style="display:inline;">
-            <button type="submit" style="background:none; border:none; color:#ecf0f1; font-weight:bold; cursor:pointer;">
-                Logout
-            </button>
-        </form>
-    </nav>
-</div>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<header class="dashboard-header text-center">
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-3">Welcome Back, Recruiter</h1>
+        <p class="lead">Manage jobs, view applications • <span th:text="${userEmail}"></span></p>
+    </div>
+</header>
+
+<main class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mb-4">
+                <div class="card-body p-5 text-center">
+                    <h3>Quick Actions</h3>
+                    <div class="row g-4 mt-4">
+                        <div class="col-md-4">
+                            <a th:href="@{/jobs/post}" class="btn btn-primary btn-lg w-100 py-3">Post New Job</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a th:href="@{/recruiter/applications}" class="btn btn-outline-primary btn-lg w-100 py-3">View Applications</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a th:href="@{/recruiter/profile}" class="btn btn-outline-secondary btn-lg w-100 py-3">Company Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

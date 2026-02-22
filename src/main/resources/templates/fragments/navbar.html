@@ -1,0 +1,38 @@
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="/">TalentLink</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/users/login}">Login</a>
+                </li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+
+                <!-- Recruiter links -->
+                <li class="nav-item" sec:authorize="hasRole('RECRUITER')">
+                    <a class="nav-link" th:href="@{/recruiter/dashboard}">Dashboard</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('RECRUITER')">
+                    <a class="nav-link" th:href="@{/jobs/post}">Post Job</a>
+                </li>
+
+                <!-- Job Seeker links -->
+                <li class="nav-item" sec:authorize="hasRole('JOB_SEEKER')">
+                    <a class="nav-link" th:href="@{/jobseeker/dashboard}">Dashboard</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('JOB_SEEKER')">
+                    <a class="nav-link" th:href="@{/jobs}">Find Jobs</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link text-warning fw-semibold" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

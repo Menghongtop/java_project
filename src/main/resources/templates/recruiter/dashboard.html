@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Recruiter Dashboard')"></head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<header class="dashboard-header text-center">
+    <div class="container">
+        <h1>Welcome Back, Recruiter!</h1>
+        <p>Manage your job postings and view applications</p>
+    </div>
+</header>
+
+<main class="container my-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Posted Jobs</h5>
+                    <h2 th:text="${postedJobsCount}">12</h2>
+                    <a th:href="@{/jobs/post}" class="btn btn-primary mt-3">Post New Job</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Applications Received</h5>
+                    <h2 th:text="${applicationsCount}">38</h2>
+                    <a th:href="@{/recruiter/applications}" class="btn btn-outline-primary mt-3">View Applications</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>Company Profile</h5>
+                    <a th:href="@{/recruiter/profile}" class="btn btn-outline-secondary mt-3">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

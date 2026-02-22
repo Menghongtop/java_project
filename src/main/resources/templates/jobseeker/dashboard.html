@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head :: head('Candidate Dashboard')"></head>
+<body>
+
+<!-- Reusable Navbar -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- Header / Welcome -->
+<header class="dashboard-header text-center">
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-3">Welcome Back, Job Seeker</h1>
+        <p class="lead opacity-90">
+            Explore opportunities • Track applications • <span th:text="${userEmail}"></span>
+        </p>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mb-5">
+    <div class="row g-4">
+
+        <!-- Quick Stats Cards -->
+        <div class="col-md-4">
+            <div class="card h-100 text-center shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-muted">Applied Jobs</h5>
+                    <h2 class="fw-bold text-primary" th:text="${appliedCount ?: '0'}">12</h2>
+                    <p class="small text-muted mt-2">Track your applications</p>
+                    <a th:href="@{/jobseeker/applications}" class="btn btn-outline-primary mt-3">View Applications</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 text-center shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-muted">Saved Jobs</h5>
+                    <h2 class="fw-bold text-primary" th:text="${savedCount ?: '0'}">8</h2>
+                    <p class="small text-muted mt-2">Your bookmarked opportunities</p>
+                    <a th:href="@{/jobseeker/saved}" class="btn btn-outline-primary mt-3">View Saved</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 text-center shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-muted">Profile Completion</h5>
+                    <h2 class="fw-bold text-success" th:text="${profileCompletion ?: '65'} + '%'">65%</h2>
+                    <p class="small text-muted mt-2">Make your profile stand out</p>
+                    <a th:href="@{/jobseeker/profile}" class="btn btn-outline-success mt-3">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Recommended / Recent Jobs Section (placeholder) -->
+    <div class="card mt-5 shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Recommended Jobs for You</h5>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Based on your profile and interests (coming soon...)</p>
+            <!-- Later: loop over recommended jobs -->
+            <div th:if="${recommendedJobs?.isEmpty()}" class="alert alert-info">
+                No recommendations yet. Complete your profile!
+            </div>
+            <!-- Example placeholder card -->
+            <div class="row g-3">
+                <div class="col-md-6" th:each="i : ${#numbers.sequence(1,3)}">
+                    <div class="card border">
+                        <div class="card-body">
+                            <h6>Software Engineer</h6>
+                            <p class="small text-muted">Tech Corp • Phnom Penh • Full-time</p>
+                            <a href="#" class="btn btn-sm btn-primary">View & Apply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="text-center mt-5">
+        <a th:href="@{/jobs}" class="btn btn-lg btn-primary px-5 py-3">
+            Find New Jobs
+        </a>
+    </div>
+</main>
+
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
