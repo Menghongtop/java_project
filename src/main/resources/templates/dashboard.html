@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            background: #2c3e50;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1abc9c;
+        }
+
+        .dashboard-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <h2>Welcome to your Dashboard!</h2>
+    <p>You are logged in successfully.</p>
+
+    <nav>
+        <a th:href="@{/users/register}">Register</a> |
+        <a th:href="@{/users/login}">Login</a> |
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" style="background:none; border:none; color:#ecf0f1; font-weight:bold; cursor:pointer;">
+                Logout
+            </button>
+        </form>
+    </nav>
+</div>
+</body>
+</html>

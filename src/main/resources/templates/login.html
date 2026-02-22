@@ -105,10 +105,9 @@
     </div>
 
     <div class="right">
-        <form th:action="@{/login}" method="post">
-            <input type="email" name="username" placeholder="Email address" required>
+        <form th:action="@{/users/login}" method="post">
+            <input type="email" name="email" placeholder="Email address" required>
             <input type="password" name="password" placeholder="Password" required>
-
             <button type="submit" class="login-btn">Log In</button>
         </form>
 
